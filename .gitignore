@@ -1,0 +1,13 @@
+venv/# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.vscode/
+behobia_2021_final.csv
+behobia_2022_final.csv
+behobia_2023_final.csv
+behobia_2024_final.csv
+behobia_2025_final.csv
+behobia_*_incremental.csv
