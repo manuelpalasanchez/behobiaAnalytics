@@ -70,7 +70,7 @@ behobia-analytics/
 - cargador_transformador.py   # ETL: limpieza, transformación y enriquecimiento
 - gestor_bd.py                # Modelado relacional en SQLite (ver nota abajo)
 - main.py                     # Script de ejecución del pipeline completo
-- style.css                    # Estilos de la app
+- style.css                   # Estilos de la app
 - behobia_maestro.csv         # Dataset final procesado
 - requirements.txt
 ```
