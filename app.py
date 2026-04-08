@@ -32,34 +32,32 @@ df_full = cargar_datos()
 años = sorted(df_full['Año'].dropna().unique().astype(int))
 
 
-st.markdown("# 🏃 Behobia - San Sebastián")
 st.markdown(
-    "<p style='color:#8b949e;margin-top:-10px;margin-bottom:16px'>"
-    "Auditoría y oportunidades comerciales · Ediciones 2021-2025 · ~123k registros</p>",
+    "<div style='text-align:center'>"
+    "<h1>🏃 Behobia – San Sebastián</h1>"
+    "<p style='color:#8b949e;margin-top:-10px;margin-bottom:16px;font-size:1.5rem'>Auditoría y oportunidades comerciales - Ediciones 2021–2025 - ~123k registros</p>"
+    "</div>",
     unsafe_allow_html=True
 )
 
 
-seleccion = st.segmented_control(
+años_str = [str(a) for a in años]
+seleccion = st.pills(
     label="Edición",
-    options=["Todas"] + [str(a) for a in años],
-    default="Todas",
+    options=años_str,
+    selection_mode="multi",
     label_visibility="collapsed"
 )
-if seleccion is None:
-    seleccion = "Todas"
 
-st.markdown("<hr style='border-color:#21262d;margin:12px 0 24px 0'>", unsafe_allow_html=True)
-
-df = df_full if seleccion == "Todas" else df_full[df_full['Año'] == int(seleccion)]
-
+años_seleccionados = [int(a) for a in seleccion] if seleccion else años
+df = df_full[df_full['Año'].isin(años_seleccionados)]
 
 total = len(df)
 finishers = len(df[df['Resultado'] == 'F'])
 pct_femenino = len(df[df['Sexo'] == 'F']) / total * 100 if total > 0 else 0
 tasa_finish = finishers / total * 100 if total > 0 else 0
 
-if seleccion == "Todas":
+if not seleccion:
     v2021 = len(df_full[df_full['Año'] == 2021])
     v2025 = len(df_full[df_full['Año'] == 2025])
     crecimiento = (v2025 - v2021) / v2021 * 100
@@ -67,11 +65,13 @@ if seleccion == "Todas":
 else:
     delta_part = ("", "delta-neu")
 
+ediciones = len(años_seleccionados)
+
 cols = st.columns(4)
-metric_card(cols[0], "Participantes",          f"{total:,}",            *delta_part)
-metric_card(cols[1], "Finishers",              f"{finishers:,}",         f"{tasa_finish:.1f}% tasa", "delta-pos")
-metric_card(cols[2], "Participación femenina", f"{pct_femenino:.1f}%",  "", "delta-neu")
-metric_card(cols[3], "Ediciones analizadas",   "5" if seleccion == "Todas" else "1", "", "delta-neu")
+metric_card(cols[0], "Participantes",          f"{total:,}",           *delta_part)
+metric_card(cols[1], "Finishers",              f"{finishers:,}",        f"{tasa_finish:.1f}% tasa", "delta-pos")
+metric_card(cols[2], "Participación femenina", f"{pct_femenino:.1f}%", "", "delta-neu")
+metric_card(cols[3], "Ediciones analizadas",   str(ediciones),         "", "delta-neu")
 
 
 section_header("1 · Optimización Operativa")
@@ -91,3 +91,4 @@ st.markdown(
     "</div>",
     unsafe_allow_html=True
 )
+

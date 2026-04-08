@@ -47,12 +47,13 @@ def grafico_afluencia(df):
         line=dict(color='#1f6feb', width=2),
         fillcolor='rgba(31,111,235,0.15)'
     ))
+    
     fig.update_layout(
-        **PLOT_LAYOUT,
-        title="Curva de Afluencia en Meta (corredores/minuto)",
-        xaxis_title="Minuto de carrera",
-        yaxis_title="Corredores/min"
-    )
+    **PLOT_LAYOUT,
+    title=dict(text="Curva de Afluencia en Meta (corredores/minuto)", font=dict(color="#f0f6fc", size=18)),
+    xaxis_title="Minuto de carrera",
+    yaxis_title="Corredores/min"
+)
     apply_axes(fig)
     st.plotly_chart(fig, use_container_width=True)
     insight_box(

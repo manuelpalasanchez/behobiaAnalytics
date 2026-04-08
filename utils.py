@@ -5,7 +5,7 @@ PLOT_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
     font=dict(color="#c9d1d9", family="monospace", size=12),
-    title_font=dict(color="#f0f6fc", size=14),
+    title_font=dict(color="#f0f6fc", size=18),
     margin=dict(l=10, r=10, t=40, b=10),
     legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(color="#c9d1d9")),
 )

@@ -38,7 +38,10 @@ def grafico_fidelizacion(df_full):
         marker=dict(colors=['#4C53AF', '#FFC107'], line=dict(color='#0f1117', width=2)),
         textfont=dict(color="#f0f6fc")
     ))
-    fig.update_layout(**PLOT_LAYOUT, title="Fidelización de Corredores (2021-2025)")
+    fig.update_layout(
+    **PLOT_LAYOUT,
+    title=dict(text="Fidelización de Corredores (2021–2025)", font=dict(color="#f0f6fc", size=18))
+    )
     st.plotly_chart(fig, use_container_width=True)
     insight_box(
         "El <b>27,7% de los participantes</b> han repetido en más de una edición. "
