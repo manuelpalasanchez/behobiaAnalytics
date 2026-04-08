@@ -10,7 +10,7 @@
 
 ## El problema
 
-La organización de la Behobia–San Sebastián acumula años de datos de clasificación públicamente accesibles pero sin explotar analíticamente. Con más de **123.000 registros entre 2021 y 2025**, existe información valiosa sobre logística del evento, perfil demográfico de los participantes e inteligencia deportiva que, a priorir, no estaba siendo utilizada.
+La organización de la Behobia–San Sebastián acumula años de datos de clasificación públicamente accesibles pero sin explotar analíticamente. Con más de **123.000 registros entre 2021 y 2025**, existe información valiosa sobre logística del evento, perfil demográfico de los participantes e inteligencia deportiva que, a priori, no estaba siendo utilizada.
 
 El objetivo fue construir un sistema que extrajera, transformara y visualizara esos datos para responder tres preguntas concretas:
 
@@ -70,7 +70,7 @@ behobia-analytics/
 - cargador_transformador.py   # ETL: limpieza, transformación y enriquecimiento
 - gestor_bd.py                # Modelado relacional en SQLite (ver nota abajo)
 - main.py                     # Script de ejecución del pipeline completo
--style.css                    # Estilos de la app
+- style.css                    # Estilos de la app
 - behobia_maestro.csv         # Dataset final procesado
 - requirements.txt
 ```
